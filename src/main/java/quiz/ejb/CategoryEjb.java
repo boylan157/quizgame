@@ -61,7 +61,7 @@ public class CategoryEjb {
 
         return category;
     }
-
+//
     private SubCategory getSubCategory(long id){
 
         return em.find(SubCategory.class, id);
