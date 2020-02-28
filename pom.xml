@@ -10,6 +10,14 @@
     <version>1.0-SNAPSHOT</version>
 
 
+
+    <properties>
+        <jbossTarget>${basedir}/target/downloaded_Wildfly</jbossTarget>
+        <jbossHome>${jbossTarget}/wildfly</jbossHome>
+        <!--  When updating this version, must also update Dockerfile using jboss/wildfly images-->
+        <version.wildfly>18.0.1.Final</version.wildfly>
+    </properties>
+
     <build>
         <plugins>
             <plugin>
@@ -20,10 +28,9 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.5.1</version>
+                <version>3.8.1</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <release>11</release>
                 </configuration>
             </plugin>
             <!-- wildfly -->
@@ -53,9 +60,10 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
+             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
+                 <version>1.8</version>
                 <executions>
                     <execution>
                         <id>wildfly</id>
@@ -63,6 +71,14 @@
                         <goals>
                             <goal>run</goal>
                         </goals>
+                        <configuration>
+                          <target>
+                                  <move file="${jbossTarget}/wildfly-${version.wildfly}"
+                                        tofile="${jbossTarget}/wildfly"
+                                        failonerror="false"
+                                  />
+                          </target>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
