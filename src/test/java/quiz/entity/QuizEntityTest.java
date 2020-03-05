@@ -1,10 +1,6 @@
 package quiz.entity;
 
 import org.junit.jupiter.api.Test;
-import quiz.entity.EntityTestBase;
-import quiz.jpa.Category;
-import quiz.jpa.Quiz;
-import quiz.jpa.SubCategory;
 
 import javax.persistence.*;
 import java.util.List;

@@ -1,4 +1,4 @@
-package quiz.jpa;
+package quiz.entity;
 
 
 

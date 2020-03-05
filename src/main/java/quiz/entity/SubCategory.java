@@ -1,6 +1,4 @@
-package quiz.jpa;
-
-import quiz.jpa.Category;
+package quiz.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;

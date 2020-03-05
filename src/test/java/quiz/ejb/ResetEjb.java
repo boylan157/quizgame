@@ -1,8 +1,8 @@
 package quiz.ejb;
 
-import quiz.jpa.Category;
-import quiz.jpa.Quiz;
-import quiz.jpa.SubCategory;
+import quiz.entity.Category;
+import quiz.entity.Quiz;
+import quiz.entity.SubCategory;
 
 import javax.ejb.Stateless;
 import javax.persistence.Entity;

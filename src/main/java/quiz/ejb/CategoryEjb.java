@@ -1,8 +1,8 @@
 package quiz.ejb;
 
 
-import quiz.jpa.Category;
-import quiz.jpa.SubCategory;
+import quiz.entity.Category;
+import quiz.entity.SubCategory;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -18,7 +18,7 @@ public class CategoryEjb {
     private EntityManager em;
 
 
-    protected Long createCategory(@NotNull String name){
+    public Long createCategory(@NotNull String name){
 
         Category category = new Category();
         category.setName(name);
@@ -27,7 +27,7 @@ public class CategoryEjb {
         return category.getId();
     }
 
-    protected Long createSubCategory(long parentId, String name){
+    public Long createSubCategory(long parentId, String name){
         Category category = em.find(Category.class, parentId);
         if(category == null){
             throw new IllegalArgumentException("Category with id " + parentId + " does not exist");
@@ -42,7 +42,7 @@ public class CategoryEjb {
         return subCategory.getId();
     }
 
-    protected List<Category> getAllCategories(boolean withSub){
+    public List<Category> getAllCategories(boolean withSub){
         TypedQuery<Category> query = em.createQuery("select c from Category c", Category.class);
         List<Category> categories = query.getResultList();
 
@@ -53,7 +53,7 @@ public class CategoryEjb {
         return categories;
     }
 
-    private Category getCategory(long id, boolean withSub){
+    public Category getCategory(long id, boolean withSub){
         Category category = em.find(Category.class, id);
         if(withSub && category != null){
             category.getSubCategories().size();
@@ -62,7 +62,7 @@ public class CategoryEjb {
         return category;
     }
 //
-    private SubCategory getSubCategory(long id){
+    public SubCategory getSubCategory(long id){
 
         return em.find(SubCategory.class, id);
     }
